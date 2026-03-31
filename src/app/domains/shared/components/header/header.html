@@ -1,0 +1,88 @@
+<header class="bg-white dark:bg-gray-900 shadow-md">
+  <div class="w-full px-4 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+      Mi Logo
+    </a>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Productos</a>
+      <a href="/about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
+    </nav>
+
+    <!-- Cart Icon -->
+    <a href="#cart" class="relative text-2xl text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition" (click)="toggleSideMenu()">
+      🛒
+      <!-- Badge (opcional) -->
+      <span class="absolute -top-1 -right-2 text-xs bg-red-500 text-white rounded-full px-1">{{cart.length}}</span>
+    </a>
+
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden text-gray-700 dark:text-gray-300 text-2xl" aria-label="Open menu">
+      ☰
+    </button>
+  </div>
+</header>
+<div
+  class="fixed border-l-4 top-0 right-0 bg-red z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white" [class.translate-x-full]="hideSideMenu()">
+  <div class="flex justify-between items-center">
+    <p class="text-xl font-bold">Mi Carrito</p>
+    <button class="p-2 border rounded relative" (click)="toggleSideMenu()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+  <!-- En esta parte se mostrarán los productos del carrito -->
+  <div class="mt-4">
+    @if (cart.length === 0) {
+      <p class="text-sm text-gray-500">Tu carrito está vacío.</p>
+    }
+
+    @for (producto of cart; track $index) {
+      <div class="py-3">
+        <div class="grid grid-cols-[56px_1fr_auto] gap-3 items-center">
+          <img
+            [src]="producto.img"
+            [alt]="producto.name"
+            class="w-14 h-14 object-cover rounded-md border"
+          />
+
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-sm font-medium text-gray-800 truncate">{{ producto.name }}</p>
+            <button
+              type="button"
+              class="remove-btn"
+              (click)="removeProduct($index)"
+              aria-label="Eliminar producto"
+            >
+              Eliminar
+            </button>
+          </div>
+
+          <p class="text-sm font-semibold text-gray-900">${{ producto.price }}</p>
+        </div>
+      </div>
+      <hr class="border-gray-200" />
+    }
+
+    @if (cart.length > 0) {
+      <div class="mt-4">
+        <p class="text-base font-bold text-gray-900">TOTAL: S/.{{ total() }}</p>
+        <button type="button" class="checkout-btn mt-3">Ir a pagar</button>
+      </div>
+    }
+  </div>
+</div>

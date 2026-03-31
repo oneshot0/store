@@ -3,15 +3,17 @@
 >
   <a href="#" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
     <img
-      [src]="img"
-      [alt]="nombre"
+      [src]="product.img"
+      [alt]="product.name"
       class="h-full w-full object-cover rounded-lg object-center group-hover:opacity-75"
     />
   </a>
   <div class="flex flex-col space-y-2 p-4">
-    <span class="text-lg text-white">{{ nombre }}</span>
+    <span class="text-lg text-white">{{ product.name }}</span>
+    <span class="text-sm font-bold text-gray-900 dark:text-white">${{ product.creationAt }}</span>
     <div class="flex items-center justify-between">
-      <span class="text-3xl font-bold text-gray-900 dark:text-white">${{ precio }}</span>
+      <span class="text-3xl font-bold text-gray-900 dark:text-white">${{ product.price }}</span>
+      
       <a
         href="#"
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
