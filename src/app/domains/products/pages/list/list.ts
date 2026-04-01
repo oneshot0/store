@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Product } from './../../components/product/product';
 import { Producto } from './../../../shared/models/producto.model';
 import { Header } from './../../../shared/components/header/header';
+import { CartService } from '../../../shared/services/cart';
 
 @Component({
   selector: 'app-list',
@@ -11,7 +12,9 @@ import { Header } from './../../../shared/components/header/header';
 })
 export class List {
   products = signal<Producto[]>([]);
-  cart = signal<Producto[]>([]);
+  private cartServices = inject(CartService)
+  //Esto ya no es necesario por la responsabilidad del servicio CartService, que se encargará de manejar el estado del carrito y el total.
+  // cart = signal<Producto[]>([]);
 
   constructor() {
     const initProductos: Producto[] = [
@@ -63,11 +66,11 @@ export class List {
 
   //En esta parte recibimos el producto emitido desde el componente hijo (Product) y lo agregamos al carrito utilizando el método update() del signal cart
   addToCart(product: Producto) {
-    this.cart.update((prevState) => [...prevState, product]);
+    this.cartServices.addToCart(product);
   }
 
   //COMENTARIO: Este método elimina del signal cart el producto según el índice recibido desde el header.
   removeFromCart(index: number) {
-    this.cart.update((prevState) => prevState.filter((_, i) => i !== index));
+    this.cartServices.removeProduct(index);
   }
 }
