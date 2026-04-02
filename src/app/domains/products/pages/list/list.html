@@ -1,10 +1,5 @@
-<div class="container mx-auto">
-  <!-- Aquí se muestra el header con el carrito -->
-  <app-header />
-
-  <div class="mt-6 grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<div class="mt-6 grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     @for (product of products(); track $index) {
       <app-product [product]="product" (addToCart)="addToCart($event)" />
     }
   </div>
-</div>

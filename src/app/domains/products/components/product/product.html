@@ -1,22 +1,23 @@
 <article
-  class="mt-6 w-64 h-95 bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden flex flex-col"
+  class="mt-6 flex h-110 w-72 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
 >
-  <div class="h-44 w-full bg-slate-100 overflow-hidden">
+  <div class="h-2/3 w-full overflow-hidden bg-slate-100">
     <img [src]="product.images[0]" [alt]="product.title" class="h-full w-full object-cover" />
   </div>
 
-  <div class="p-4 flex flex-col flex-1 gap-3">
+  <div class="flex flex-1 flex-col gap-2 p-4">
     <h3
-      class="text-sm font-semibold text-slate-800 leading-5 line-clamp-2 min-h-10"
+      class="min-h-10 text-sm font-semibold leading-5 text-black line-clamp-2"
       [title]="product.title"
     >
       {{ product.title | uppercase | reverse}}
     </h3>
-    <span>{{ product.description | slice:0:50 }}...</span>
-    <span>{{ product.creationAt | timeAgo }}</span>
-    <span class="text-sm text-gray-500">{{ product.creationAt | date: 'short' }}</span>
 
-    <p class="text-2xl font-extrabold text-slate-900">{{ product.price | currency: 'S/  ': 'symbol': '1.2-2' }}</p>
+    <span class="text-sm leading-5 text-slate-600">{{ product.description | slice:0:50 }}...</span>
+
+    <p class="text-sm font-semibold text-black">{{ product.price | currency: 'S/  ': 'symbol': '1.2-2' }}</p>
+
+    <span class="text-[11px] text-slate-400">{{ product.creationAt | timeAgo }}</span>
 
     <button
       type="button"

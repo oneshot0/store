@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { CartService } from '../../services/cart';
+import { RouterLinkWithHref, RouterLinkActive } from '@angular/router';
 
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [RouterLinkWithHref, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })

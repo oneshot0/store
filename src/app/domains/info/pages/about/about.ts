@@ -2,8 +2,8 @@ import { Component, signal } from '@angular/core';
 
 import { Counter } from '@shared/components/counter/counter';
 import { HighlightDirective } from '@shared/directives/highlight';
-
-import { WaveAudio as WaveAudio } from "../../components/wave-audio/wave-audio";
+import { Header } from '@shared/components/header/header';
+import { WaveAudio as WaveAudio } from "@info/components/wave-audio/wave-audio";
 
 
 @Component({

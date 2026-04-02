@@ -7,7 +7,7 @@ import { ProductService } from '../../../shared/services/product';
 
 @Component({
   selector: 'app-list',
-  imports: [Product, Header],
+  imports: [Product],
   templateUrl: './list.html',
   styleUrl: './list.css',
 })

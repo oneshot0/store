@@ -1,0 +1,76 @@
+<section class="relative min-h-screen overflow-hidden bg-linear-to-br from-amber-50 via-orange-100 to-stone-100 text-stone-800">
+  <div class="absolute inset-0 opacity-70">
+    <div class="absolute -left-24 top-12 h-72 w-72 rounded-full bg-amber-300/30 blur-3xl"></div>
+    <div class="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-orange-300/30 blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/4 h-64 w-64 rounded-full bg-rose-300/20 blur-3xl"></div>
+  </div>
+
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.35)_1px,transparent_1px)] bg-size-[56px_56px] opacity-30"></div>
+
+  <div class="relative mx-auto flex min-h-screen w-full max-w-7xl items-center px-6 py-12 sm:px-10 lg:px-16">
+    <div class="grid w-full items-center gap-10 lg:grid-cols-2">
+      <div class="space-y-8">
+        <div class="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white/70 px-4 py-2 text-sm font-semibold text-amber-700 shadow-sm backdrop-blur">
+          <span class="h-2 w-2 rounded-full bg-amber-500 animate-pulse"></span>
+          Ruta no encontrada
+        </div>
+
+        <div class="space-y-5">
+          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700/80">Error 404</p>
+          <h1 class="max-w-xl text-5xl font-black tracking-tight text-stone-900 sm:text-6xl lg:text-7xl">
+            Página no encontrada
+          </h1>
+          <p class="max-w-2xl text-lg leading-8 text-stone-600 sm:text-xl">
+            La página que buscabas no existe o se movió. Volvamos al inicio para seguir explorando la tienda sin perder el ritmo.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <a
+            routerLink="/"
+            class="inline-flex items-center justify-center rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-stone-900/20 transition duration-300 hover:-translate-y-0.5 hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-amber-50"
+          >
+            Volver al inicio
+          </a>
+
+          <p class="text-sm text-stone-500">
+            Si quieres, también puedes revisar el menú principal o regresar a la tienda.
+          </p>
+        </div>
+      </div>
+
+      <div class="relative mx-auto flex w-full max-w-xl justify-center">
+        <div class="absolute left-1/2 top-12 h-72 w-72 -translate-x-1/2 rounded-full bg-amber-400/20 blur-3xl animate-pulse"></div>
+
+        <div class="relative w-full max-w-md rounded-4xl border border-white/70 bg-white/80 p-6 shadow-[0_24px_80px_rgba(120,53,15,0.18)] backdrop-blur-xl">
+          <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.3em] text-stone-400">
+            <span>Señal perdida</span>
+            <span>404</span>
+          </div>
+
+          <div class="mt-6 rounded-4xl bg-linear-to-b from-amber-200 via-orange-300 to-stone-800 p-5 shadow-inner shadow-orange-900/10">
+            <div class="relative overflow-hidden rounded-3xl border border-amber-100/50 bg-linear-to-b from-amber-100 via-orange-100 to-stone-900 px-5 py-8 text-center shadow-2xl shadow-stone-900/20">
+              <div class="absolute inset-x-0 top-0 h-20 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.5),transparent_68%)] opacity-80"></div>
+
+              <div class="relative mx-auto flex h-40 w-40 items-center justify-center rounded-full bg-linear-to-br from-amber-200 via-orange-200 to-rose-200 shadow-[0_0_0_16px_rgba(255,255,255,0.15)] animate-pulse">
+                <div class="absolute inset-5 rounded-full border border-white/70 bg-linear-to-br from-stone-900 via-stone-800 to-orange-950"></div>
+                <div class="relative z-10 text-center">
+                  <div class="text-5xl font-black tracking-tight text-amber-200">404</div>
+                  <div class="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-amber-100/80">sin ruta</div>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-end justify-between gap-3">
+                <div class="h-10 w-16 rounded-t-3xl bg-amber-500/90 shadow-lg shadow-amber-900/20 animate-bounce"></div>
+                <div class="h-16 w-16 rounded-t-3xl bg-orange-500/90 shadow-lg shadow-orange-900/20 animate-bounce [animation-delay:120ms]"></div>
+                <div class="h-12 w-16 rounded-t-3xl bg-rose-500/90 shadow-lg shadow-rose-900/20 animate-bounce [animation-delay:240ms]"></div>
+                <div class="h-20 w-16 rounded-t-3xl bg-stone-700/90 shadow-lg shadow-stone-900/20 animate-bounce [animation-delay:360ms]"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

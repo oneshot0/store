@@ -1,3 +1,7 @@
 /* Puedes agregar estilos globales a este archivo, e importar otros archivos de estilos */
 
 @import 'tailwindcss';
+
+html {
+	scrollbar-gutter: stable;
+}
