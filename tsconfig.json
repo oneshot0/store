@@ -18,6 +18,12 @@
     "paths": {
       "@shared/*": [
         "src/app/domains/shared/*"
+      ],
+      "@info/*": [
+        "src/app/domains/info/*"
+      ],
+      "@products/*": [
+        "src/app/domains/products/*"
       ]
     }
   },
