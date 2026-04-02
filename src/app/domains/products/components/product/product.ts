@@ -1,10 +1,13 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { required } from '@angular/forms/signals';
-import { Producto } from './../../../shared/models/producto.model';
+import { CommonModule, CurrencyPipe, UpperCasePipe, DatePipe } from '@angular/common';
+import { Producto } from '@shared/models/producto.model';
+import { ReversePipe } from '@shared/pipes/reverse-pipe';
+import { TimeAgoPipe } from '@shared/pipes/time-ago-pipe';
 
 @Component({
   selector: 'app-product',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, CurrencyPipe, UpperCasePipe, DatePipe, ReversePipe, TimeAgoPipe],
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
