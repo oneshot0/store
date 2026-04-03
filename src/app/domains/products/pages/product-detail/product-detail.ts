@@ -3,6 +3,7 @@ import { Producto } from '@shared/models/producto.model';
 import { ProductService } from '@shared/services/product';
 import { CurrencyPipe, UpperCasePipe } from '@angular/common';
 import { Product } from '@products/components/product/product';
+import { CartService } from '@shared/services/cart';
 
 
 
@@ -20,6 +21,7 @@ export class ProductDetail {
   //creamos un signal exclusivo para la imagen de portada del producto, lo que nos permitirá manejarla de manera independiente y actualizarla sin afectar el resto de los detalles del producto.
   cover = signal('');
   private productService = inject(ProductService);
+  private cartService = inject(CartService);
 
   //Aquí lo que hacemos es usar el ciclo de vida ngOnInit para cargar los detalles del producto cuando el componente se inicializa. Verificamos si el id está presente y luego llamamos al servicio para obtener los detalles del producto, actualizando la señal con la respuesta.
   ngOnInit() {
@@ -39,6 +41,14 @@ export class ProductDetail {
   changeCover(newImg: string) {
     this.cover.set(newImg);
   }
+
+  addToCart() {
+    const product = this.product();
+    if (product) {
+      this.cartService.addToCart(product);
+    }
+  }
+
 
 
 }
