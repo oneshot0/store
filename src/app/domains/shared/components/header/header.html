@@ -1,0 +1,112 @@
+<header class="bg-white shadow-md">
+  <div class="mx-auto grid w-full max-w-7xl grid-cols-[1fr_auto] items-center gap-4 px-4 py-4 md:grid-cols-[1fr_auto_1fr]">
+    <a routerLink="/" class="justify-self-start text-2xl font-bold text-blue-600 transition hover:text-blue-700">
+      Mi Logo
+    </a>
+
+    <nav class="hidden items-center justify-self-center md:flex md:gap-8">
+      <a
+        routerLink="/"
+        routerLinkActive="text-blue-600 underline "
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="relative text-gray-700 transition hover:text-blue-600"
+      >
+        Home
+      </a>
+      <a
+        routerLink="/about"
+        routerLinkActive="text-blue-600 underline "
+        class="relative text-gray-700 transition hover:text-blue-600"
+      >
+        About
+      </a>
+      <a
+        routerLink="/services"
+        routerLinkActive="text-blue-600 underline "
+        class="relative text-gray-700 transition hover:text-blue-600"
+      >
+        Servicios
+      </a>
+    </nav>
+
+    <div class="col-start-2 row-start-1 flex items-center justify-self-end gap-3 md:col-start-3">
+      <button
+        type="button"
+        class="relative text-2xl text-gray-700 transition hover:text-blue-600"
+        (click)="toggleSideMenu()"
+        aria-label="Abrir carrito"
+      >
+        🛒
+        <span class="absolute -top-1 -right-2 rounded-full bg-red-500 px-1 text-xs text-white">{{ cart().length }}</span>
+      </button>
+
+      <button class="text-2xl text-gray-700 md:hidden" aria-label="Open menu">
+        ☰
+      </button>
+    </div>
+  </div>
+</header>
+<div
+  class="fixed border-l-4 top-0 right-0 bg-red z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white" [class.translate-x-full]="hideSideMenu()">
+  <div class="flex justify-between items-center">
+    <p class="text-xl font-bold">Mi Carrito</p>
+    <button class="p-2 border rounded relative" (click)="toggleSideMenu()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+  <!-- En esta parte se mostrarán los productos del carrito -->
+  <div class="mt-4">
+    @if (cart().length === 0) {
+      <p class="text-sm text-gray-500">Tu carrito está vacío.</p>
+    }
+
+    @for (producto of cart(); track $index) {
+      <div class="py-3">
+        <div class="grid grid-cols-[56px_1fr] gap-3 items-start">
+          <img
+            [src]="producto.images[0]"
+            [alt]="producto.title"
+            class="w-14 h-14 object-cover rounded-md border"
+          />
+
+          <div class="min-w-0">
+            <div class="flex items-start justify-between gap-2">
+              <p class="text-sm font-medium text-gray-800 leading-5 line-clamp-2" [title]="producto.title">{{ producto.title }}</p>
+              <button
+                type="button"
+                class="shrink-0 rounded-md border border-violet-300 px-2 py-1 text-xs font-semibold text-violet-700 transition hover:bg-violet-50"
+                (click)="removeProduct($index)"
+                aria-label="Eliminar producto"
+              >
+                Eliminar
+              </button>
+            </div>
+
+            <p class="mt-1 text-sm font-bold text-gray-900">S/. {{ producto.price }}</p>
+          </div>
+        </div>
+      </div>
+      <hr class="border-gray-200" />
+    }
+
+    @if (cart().length > 0) {
+      <div class="mt-4">
+        <p class="text-base font-bold text-gray-900">TOTAL: S/.{{ total() }}</p>
+        <button type="button" class="checkout-btn mt-3">Ir a pagar</button>
+      </div>
+    }
+  </div>
+</div>

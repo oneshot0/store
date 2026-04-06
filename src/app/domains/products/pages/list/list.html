@@ -1,8 +1,21 @@
-<div class="grid grid-cols-3 gap-4">
-  <app-product [img]="'https://picsum.photos/200/300?r=1'" [nombre]="'Producto1'"  [precio]="19.99" (addToCart)="fromchild($event)" />
-  <app-product [img]="'https://picsum.photos/200/300?r=2'" [nombre]="'Producto2'" [precio]="29.99" (addToCart)="fromchild($event)" />
-  <app-product [img]="'https://picsum.photos/200/300?r=3'" [nombre]="'Producto3'" [precio]="39.99" (addToCart)="fromchild($event)" />
-  <app-product [img]="'https://picsum.photos/200/300?r=4'" [nombre]="'Producto4'" [precio]="49.99" (addToCart)="fromchild($event)" />
-  <app-product [img]="'https://picsum.photos/200/300?r=5'" [nombre]="'Producto5'" [precio]="59.99" (addToCart)="fromchild($event)" />
-  <app-product [img]="'https://picsum.photos/200/300?r=6'" [nombre]="'Producto6'" [precio]="69.99" (addToCart)="fromchild($event)" />
+<div class="flex space-x-4 mt-5">
+  <div class="w-80">
+    <ul>
+      <li>
+        <a routerLink="/" class="font-semibold" >All Categories</a>
+      </li>
+        @for (category of categories(); track $index) {
+          <li>
+            <a routerLink="/" [queryParams]="{ category_id: category.id }" >{{ category.name }}</a>
+          </li>
+        }
+    </ul>
+  </div>
+  <div class="w-full mt-6 grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    @for (product of products(); track $index) {
+      <app-product [product]="product" (addToCart)="addToCart($event)" />
+    }
+  </div>
+
+
 </div>

@@ -1,0 +1,40 @@
+.product-card {
+	transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+	border-color: #38bdf8;
+	box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35);
+}
+
+.image-wrap {
+	position: relative;
+	display: block;
+}
+
+.main-image,
+.hover-image {
+	position: absolute;
+	inset: 0;
+	transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.main-image {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.hover-image {
+	opacity: 0;
+	transform: scale(1.06);
+}
+
+.image-wrap:hover .main-image {
+	opacity: 0;
+	transform: scale(1.1);
+}
+
+.image-wrap:hover .hover-image {
+	opacity: 1;
+	transform: scale(1.1);
+}

@@ -1,15 +1,19 @@
 import { Component, signal } from '@angular/core';
 
-import { Counter } from './../../../shared/components/counter/counter';
+import { Counter } from '@shared/components/counter/counter';
+import { HighlightDirective } from '@shared/directives/highlight';
+import { Header } from '@shared/components/header/header';
+import { WaveAudio as WaveAudio } from "@info/components/wave-audio/wave-audio";
+
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [Counter],
+  imports: [Counter, HighlightDirective, WaveAudio],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About {
+export default class About {
   duration = signal(1000);
   message = signal('Contador desde about');
 

@@ -1,12 +1,21 @@
-<p>
-  <input type="number" [value]="duration()" (change)="changeDuration($event)" />
-</p>
-<p>
-  <input type="text" [value]="message()" (change)="changeMessage($event)" />
-</p>
-
-<p>
-  @if (duration() > 500) {
-    <app-counter [duration]="duration()" [message]="message()"></app-counter>
-    }
-</p>
+<div class="container mx-auto">
+  <!-- Aquí se muestra el header con el carrito -->
+  
+  <div class="px-10">
+    <h1 class="text-lg font-bold">About Us</h1>
+    <p class="text-xs">
+      Lorem ipsum dolor <span highlight> Hola como estás , yo muy bien </span> sit amet consectetur
+      adipisicing elit. Ratione explicabo qui beatae sit accusamus reiciendis, magnam quo a eligendi
+      quibusdam corporis recusandae harum sequi, vitae dolorum nam quam soluta provident.
+    </p>
+    <p class="text-xl">
+      Número de clientes
+      @if (duration() > 500) {
+        <app-counter [duration]="duration()" [message]="message()"></app-counter>
+      }
+    </p>
+    <div>
+      <app-wave-audio audioUrl="/audio.mp3"></app-wave-audio>
+    </div>
+  </div>
+</div>

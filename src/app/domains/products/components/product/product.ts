@@ -1,22 +1,25 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { required } from '@angular/forms/signals';
-
+import { CommonModule, CurrencyPipe, UpperCasePipe } from '@angular/common';
+import { Producto } from '@shared/models/producto.model';
+import { TimeAgoPipe } from '@shared/pipes/time-ago-pipe';
+import { RouterLinkWithHref } from "@angular/router";
 
 @Component({
   selector: 'app-product',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, CurrencyPipe, UpperCasePipe, TimeAgoPipe, RouterLinkWithHref],
   templateUrl: './product.html',
   styleUrl: './product.css',
 })
 export class Product {
-  @Input({required: true}) img: string = '';
-  @Input({required: true}) nombre: string = '';
-  @Input({required: true}) precio: number = 0;
+  @Input({required: true}) product!: Producto ;
+  // @Input({required: true}) nombre: string = '';
+  // @Input({required: true}) precio: number = 0;
 
   @Output() addToCart = new EventEmitter();
 
+  //Aquí agregaremos el método para emitir el evento al hacer clic en el botón "Agregar al carrito"
   addToCartHandler() {
-    console.log(`Producto agregado al carrito: ${this.nombre}`);
-    this.addToCart.emit('Hola este es un mensaje desde el hijo');
+    this.addToCart.emit(this.product);
   }
 }

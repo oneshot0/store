@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, signal, SimpleChanges } from '@angular/core';
 import { required } from '@angular/forms/signals';
 
 
@@ -11,6 +11,8 @@ import { required } from '@angular/forms/signals';
 export class Counter {
   @Input({required: true}) duration: number = 0;
   @Input({required: true}) message: string = '';
+  counter = signal(0);
+  counterRef: number | undefined;
 
   constructor() {
     //Esto corre antes de que el componente se muestre en pantalla, por lo que los valores de duration y message aún no están disponibles.
@@ -22,6 +24,10 @@ export class Counter {
     //Esto se ejecuta cada vez que cambian las propiedades de entrada, incluyendo la primera vez que se asignan.
     console.log('ngOnChanges called with changes:', changes);
     console.log('-'.repeat(10));
+    const duration = changes['duration'];
+    if (duration && duration.currentValue !== duration.previousValue) {
+      console.log('Duration changed:', duration.currentValue);
+    }
   }
 
   ngOnInit() {
@@ -30,6 +36,11 @@ export class Counter {
     console.log('-'.repeat(10));
     console.log('duration =>', this.duration);
     console.log('message =>', this.message);
+    this.counterRef = window.setInterval(() => {
+      console.log('run interval');
+      this.counter.update((value) => value + 1);
+    }, this.duration);
+
   }
 
   ngAfterViewInit() {
@@ -42,6 +53,12 @@ export class Counter {
     //Esto se ejecuta justo antes de que Angular destruya el componente, lo que es útil para limpiar recursos, cancelar suscripciones o realizar cualquier tarea de limpieza necesaria.
     console.log('ngOnDestroy called');
     console.log('-'.repeat(10));
+    window.clearInterval(this.counterRef);
+    
+  }
+
+  doSomething() {
+    console.log('Doing something...');
   }
 
 
