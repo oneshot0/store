@@ -1,9 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { List } from './domains/products/pages/list/list';
-import { ProductDetail } from '@products/pages/product-detail/product-detail';
 import { Layout } from '@shared/components/layout/layout';
-import { About } from '@info/pages/about/about';
 import { NotFound } from '@info/pages/not-found/not-found';
 
 export const routes: Routes = [
@@ -12,13 +9,17 @@ export const routes: Routes = [
     component: Layout,
     children: [
       {
-        path: '', component: List
+        //Esta es la forma de decirle al empaquetado de angular que cargue de forma perezosa el componente List cuando se navegue a la ruta raíz (''). Esto ayuda a mejorar el rendimiento de la aplicación al cargar solo el código necesario para esa ruta específica en lugar de cargar todo el código de la aplicación de una vez.
+        path: '',
+        loadComponent: () => import('./domains/products/pages/list/list')
       },
       {
-        path: 'about', component: About
+        path: 'about', 
+        loadComponent: () => import('./domains/info/pages/about/about')
       },
       {
-        path: 'product/:id', component: ProductDetail
+        path: 'product/:id', 
+        loadComponent: () => import('./domains/products/pages/product-detail/product-detail')
       }
 
     ]

@@ -13,7 +13,7 @@ import { WaveAudio as WaveAudio } from "@info/components/wave-audio/wave-audio";
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About {
+export default class About {
   duration = signal(1000);
   message = signal('Contador desde about');
 

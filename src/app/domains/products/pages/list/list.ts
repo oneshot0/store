@@ -14,7 +14,7 @@ import { CategoryService } from '@shared/services/category';
   templateUrl: './list.html',
   styleUrl: './list.css',
 })
-export class List {
+export default class List {
   products = signal<Producto[]>([]);
   categories = signal<Category[]>([]);
   private cartServices = inject(CartService)
